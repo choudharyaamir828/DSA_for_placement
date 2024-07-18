@@ -10,11 +10,11 @@ void printpermutation(string &s,int i ){
     swap(s[i],s[j]);
     printpermutation(s,i+1);
 
-    //backtracking
+    //backtracking : to recreate original input
 
      swap(s[i],s[j]);
   }
-}
+} 
 
 int main() {
  string s = "abc";
