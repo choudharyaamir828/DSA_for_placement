@@ -18,7 +18,11 @@ int main(){
     vector<int>arr = {1,2,-6,4,5,6};
     
 
-    cout<<"the ans is :"<< sumOftwo(arr);
+     if(sumOftwo(arr)){
+        cout<<"the ans is: 1"<<endl;
+     }
+     else
+     cout<<"the ans is: 0";
 
 
     return 0;
