@@ -27,8 +27,10 @@ void printallsubarray_utl(vector<int>nums,int start,int end ){
 
 int main(){
     vector<int>nums = {1,2,3,4};
+    cout<<"all sub array is :"<<endl;
     printallsubarray(nums);
     cout<<endl;
+    
 
 
     return 0;
