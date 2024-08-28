@@ -27,12 +27,30 @@ void pascal(int row){
     }
     
 }
+int pascalrow(int n,int r){
+    int val = 1;
+    for(int i = 0;i<r;i++){
+        
+        val = val*(n-i)/(i+1);
+        
+    }
+    return val;
+}
+void pascalTrangle(int n){
+    for(int c =0;c<=n;c++){
+        cout<<pascalrow(n,c)<<" ";
+    }
+}
+
 
 
 int main(){
 
-int row = 5;
-pascal(row);
+    int n = 5;
+    pascalTrangle(n);
+
+// int row = 5;
+// pascal(row);
 
 
 
