@@ -10,7 +10,12 @@ class mobile{
     public:
     mobile(string _Name,int _price):name(_Name),price(_price){};
 
-
+    string getname(){
+        return name;
+    }
+    int getprice(){
+        return price;
+    }
 };
 
 class B{
