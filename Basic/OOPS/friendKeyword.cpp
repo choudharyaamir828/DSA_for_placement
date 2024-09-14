@@ -4,31 +4,43 @@ using namespace std;
 
 
 class mobile{
-    string name;
+    private:
+    
     int price;
 
     public:
-    mobile(string _Name,int _price):name(_Name),price(_price){};
+    mobile(int _price):price(_price){};
 
-    string getname(){
-        return name;
-    }
-    int getprice(){
+    
+    int getprice() const{
         return price;
     }
+    void setprice(int val){price = val;}
+
+    friend class B;
+    friend void printnum(const mobile &a);
 };
 
 class B{
     public:
     void print(const mobile &a){
-        
+      //  cout<< a.getprice()<<endl;
+
+      cout<<a.price<<endl;
     }
 };
 
-
+void printnum(const mobile &a){
+    cout<<a.price<<endl;
+}
 
 
 int main(){
+    mobile a(500);
+    B b;
+    b.print(a);
+
+    printnum(a);
 
 
     return 0;
