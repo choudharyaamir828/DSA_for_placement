@@ -14,6 +14,12 @@ class node{
         this->data = data;
         this->next =  NULL;
     }
+
+    // write distructor
+    ~node(){
+        cout<<"node with value:"<< this->data << "deleted";
+    }
+    
 };
 
 void print(node* &head){
@@ -112,6 +118,41 @@ void insertAtposition(int position,node* &head,node* &tail,int data){
     prev->next = newnode;
 }
 
+// delete node from starting  
+
+void deletenode(int position, node* &head,node* &tail){
+
+    if(head == NULL){
+        cout<<"cannot delete, it is empty"<<endl;
+        return;
+    }
+    if(position == 1){
+        node* temp = head;
+        head = head->next;
+        temp->next= NULL;
+        delete temp;
+        return;
+
+    }
+    int len = findlength(head);
+    if(position == len){ 
+    node* prev = head;
+    int i = 1;
+    while (i< position-1){
+        prev= prev-1;
+        i++;
+    }
+    
+    prev->next = NULL;
+
+    node* temp = tail;
+    tail = prev;
+    delete temp;
+    return;
+
+    }
+}
+
 
 
 int main(){
@@ -144,21 +185,18 @@ int main(){
     insertAttail(head,tail,34);
     insertAttail(head,tail,32);
       
-    cout<<"printing element: ";
-    print(head);
-
+    // cout<<"printing element: ";
+    // print(head);
 
     insertAtposition(5,head,tail,101);
 
 
-    
 
 
-    
-
-    cout<<endl;
-    cout<<"printing element: ";
+    cout<<endl<<"printing element: ";
     print(head);
+
+    
 
     return 0;
 }
