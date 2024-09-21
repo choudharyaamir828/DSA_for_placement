@@ -31,6 +31,7 @@ int main(){
     int n = 9;
 
     cout<< "the mising number is :"<<obj.MissingNumber(arr,n);
+    cout<< "the mising number is :"<<obj.MissingNumber(arr,n);
 
 
 
