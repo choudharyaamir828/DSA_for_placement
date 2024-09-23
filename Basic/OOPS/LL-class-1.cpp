@@ -153,7 +153,32 @@ void deletenode(int position, node* &head,node* &tail){
     }
 }
 
+node* reverse(node* &prev,node* &curr){
+    if(curr == NULL){
+        // ll reverse ho gai
+        return prev;
 
+    }
+    // 1 case solve karna hai
+    node* forward = curr->next;
+    curr->next = prev;
+
+    reverse(curr,forward);
+
+}
+
+node* reverseusingloop(node* head){
+    node* prev = NULL;
+    node* curr = head;
+    while (curr == NULL)
+    {
+        node* temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    
+}
 
 int main(){
    
@@ -194,6 +219,14 @@ int main(){
 
 
     cout<<endl<<"printing element: ";
+    print(head);
+
+
+    node* prev = NULL;
+    node* curr = head;
+    // head = reverse(prev,curr);
+   head =  reverseusingloop(head);
+    cout<<endl<<"Reverse Linked list : ";
     print(head);
 
     
