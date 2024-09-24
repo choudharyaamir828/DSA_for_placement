@@ -214,6 +214,7 @@ int main(){
     // print(head);
 
     insertAtposition(5,head,tail,101);
+    insertAtposition(5,head,tail,102);
 
 
 
