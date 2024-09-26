@@ -43,6 +43,48 @@ node* getMiddleNode(node* head){
     return slow;
     
 }
+int getlength(node* head){
+    int len = 0;
+    node* temp = head;
+    while(temp != NULL){
+        temp = temp->next;
+        len++;
+    }
+    return len;
+}
+
+node* reverseKnode(node* head,int k){
+    if(head == NULL){
+        return NULL;
+    }
+
+    int len = getlength(head);
+
+    if(k > len){
+        cout<<"please enter valid k value"<<endl;
+        return head;
+    }
+
+    node* prev = NULL;
+    node* curr = head;
+    node* forward = NULL;
+    int count= 0;
+
+    while(count < k){
+        forward = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = forward;
+        count++;
+    }
+    if(forward != NULL){
+        head->next = reverseKnode(forward,k);
+
+    }
+
+    return prev;
+
+}
 
 int main(){
 
@@ -60,7 +102,12 @@ int main(){
     sixth->next = NULL;
 
     print(head);
-    cout<<"Middle node is : "<< getMiddleNode(head)->data<<endl;
+    // cout<<"Middle node is : "<< getMiddleNode(head)->data<<endl;
+
+    head = reverseKnode(head,2);
+    print(head);
+
+
 
     return 0;
 }
