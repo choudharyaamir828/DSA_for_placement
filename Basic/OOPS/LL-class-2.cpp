@@ -22,6 +22,29 @@ class Node{
         cout<<"deleted Node "<<this->data<<endl;
     }
 };
+Node* reverse(Node* &prev,Node* &curr){
+    if(curr == NULL){
+        return prev;
+    }
+    Node* forward = curr->next;
+    curr -> next = prev;
+    reverse(curr,forward);
+}
+
+Node* reverseUsingLoop(Node* head){
+    Node* prev = NULL;
+    Node* curr = head;
+    while(curr != NULL){
+        Node* temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+
+
+    }
+    return prev;
+}
+
 
 void print(Node* &head){
     Node* temp =  head;
@@ -135,6 +158,7 @@ void insertAtposition(Node* &head,Node*& tail,int data,int position  ){
 
 }
 
+
 // Delete Node
 
 void deleteNode(Node* &head, Node* &tail,int position){
@@ -196,6 +220,10 @@ void deleteNode(Node* &head, Node* &tail,int position){
 
 
 
+
+
+
+
 int main(){
 
     Node* first = new Node(10);
@@ -220,25 +248,33 @@ int main(){
     cout<<endl;
 
 
-    insertAttail(head,tail,105);
+     insertAttail(head,tail,105);
 
-    print(head);
-    cout<<endl;
-
-    insertAtposition(head,tail,124,2);
-    print(head);
-    cout<<endl;
-
-    insertAtposition(head,tail,123,1);
-    print(head);
-    cout<<endl;
-
-    insertAtposition(head,tail,123,7);
-    print(head);
-    cout<<endl;
-
-     deleteNode(head,tail,1);
      print(head);
+    cout<<endl;
+
+     insertAtposition(head,tail,124,2);
+     print(head);
+     cout<<endl;
+
+     insertAtposition(head,tail,123,1);
+     print(head);
+     cout<<endl;
+
+     insertAtposition(head,tail,123,7);
+     print(head);
+     cout<<endl;
+
+      deleteNode(head,tail,1);
+      print(head);
+    
+    Node* curr = head;
+    Node* prev = NULL;
+
+   // head = reverse(prev,head);
+   head = reverseUsingLoop(head);
+    cout<<endl;
+    print(head);
 
     return 0;
 }
