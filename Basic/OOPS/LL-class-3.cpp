@@ -85,6 +85,30 @@ node* reverseKnode(node* head,int k){
     return prev;
 
 }
+bool findloop(node* head){
+    
+    if(head == NULL){
+        cout<<"ll is empty"<<endl;
+        return false;
+    }
+    
+
+    node* slow = head;
+    node* fast = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast->next != NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+
+        if(fast == slow){
+        return true;
+        }
+    }
+    return false;
+}
 
 int main(){
 
@@ -99,13 +123,15 @@ int main(){
     third->next = forth;
     forth->next = fifth;
     fifth->next = sixth;
-    sixth->next = NULL;
+    sixth->next = forth;
 
-    print(head);
+   // print(head);
     // cout<<"Middle node is : "<< getMiddleNode(head)->data<<endl;
 
-    head = reverseKnode(head,2);
-    print(head);
+   // head = reverseKnode(head,4);
+ //   print(head);
+
+ cout<<"loop is present : "<<findloop(head)<<endl;
 
 
 
