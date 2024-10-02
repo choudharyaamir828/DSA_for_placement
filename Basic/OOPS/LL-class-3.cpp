@@ -110,6 +110,40 @@ bool findloop(node* head){
     return false;
 }
 
+// find loop
+
+node* startingpositionLoop(node* &head){
+    if(head == NULL){
+        cout<<"ll is empty"<<endl;
+    }
+
+    node* slow = head;
+    node*fast = head;
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast-> next != NULL){
+            fast= fast->next;
+            slow = slow->next;
+        }
+        if(slow == fast){
+            slow  = head;
+            break;
+        }
+    }
+    node* prev = fast;
+    while(slow != fast){
+        prev = fast;
+        slow = slow->next;
+        fast = fast->next;
+    }   
+    prev -> next  = NULL;
+    return slow;  
+
+}
+
+
+
+
 int main(){
 
     node* head = new node(10);
@@ -118,12 +152,16 @@ int main(){
     node* forth = new node(40);
     node* fifth = new node(50);
     node* sixth = new node(60);
+    node* seventh = new node(70);
+    node* Eight = new node(80);
     head->next = second;
     second->next = third;
     third->next = forth;
     forth->next = fifth;
     fifth->next = sixth;
-    sixth->next = forth;
+    sixth->next = seventh;
+    seventh->next = Eight;
+    Eight->next = forth;
 
    // print(head);
     // cout<<"Middle node is : "<< getMiddleNode(head)->data<<endl;
@@ -131,7 +169,16 @@ int main(){
    // head = reverseKnode(head,4);
  //   print(head);
 
- cout<<"loop is present : "<<findloop(head)<<endl;
+  // cout<<"loop is present : "<<findloop(head)<<endl;
+
+  cout<<"the staring position is " <<startingpositionLoop(head)->data<<endl;
+    
+    print(head);
+
+
+
+
+
 
 
 
