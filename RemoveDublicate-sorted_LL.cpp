@@ -67,6 +67,8 @@ int main(){
     insertattail(head,tail,4);
     insertattail(head,tail,4);
 
+
+
     cout<<"before removing: ";
     print(head);
     cout<<endl;
